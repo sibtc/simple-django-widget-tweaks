@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>
+    Persons
+    <a href="{% url 'add_person' %}" class="btn btn-primary pull-right">
+      <span class="glyphicon glyphicon-plus"></span> Add person
+    </a>
+  </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Bio</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for person in persons %}
+        <tr>
+          <td>{{ person.id }}</td>
+          <td>{{ person.first_name }}</td>
+          <td>{{ person.last_name }}</td>
+          <td>{{ person.email }}</td>
+          <td>{{ person.phone }}</td>
+          <td>{{ person.bio }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6" class="text-center">No result</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
